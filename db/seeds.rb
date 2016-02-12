@@ -12,4 +12,10 @@ Group.destroy_all
 
 User.destroy_all
 
-User.create! name: 'Michu Benaim', email: 'michu@weareinhouse.com', :password => 'topsecret', :password_confirmation => 'topsecret', username: 'michu', group_id: @due.id
+@m =User.create! name: 'Michu Benaim', email: 'michu@weareinhouse.com', :password => 'topsecret', :password_confirmation => 'topsecret', username: 'michu'
+
+@due.users << @m
+
+Menu.destroy_all
+
+Menu.create! name: 'Wine list',  group_id: @due.id

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
   def show
-    @group = Group.find_by(:subdomain => request.subdomain)
+    @group = Group.where(:subdomain => request.subdomain).first
   end
 end
