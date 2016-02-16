@@ -3,6 +3,7 @@ class CreateMenus < ActiveRecord::Migration
     create_table :menus do |t|
       t.string :name
       t.string :slug
+      t.text :template
       t.timestamps null: false
     end
   end

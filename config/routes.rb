@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   root :to => "pages#index"
+
+  resources :menus
 end

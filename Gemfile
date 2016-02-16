@@ -25,6 +25,7 @@ gem 'wicked_pdf'
 gem 'faker'
 gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
+gem 'liquid', '~> 2.6.1'
 
 group :development, :test do
   gem 'byebug'

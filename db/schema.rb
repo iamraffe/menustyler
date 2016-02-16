@@ -25,7 +25,10 @@ ActiveRecord::Schema.define(version: 20160212014729) do
     t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "menu_id"
   end
+
+  add_index "categories", ["menu_id"], name: "index_categories_on_menu_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -51,9 +54,14 @@ ActiveRecord::Schema.define(version: 20160212014729) do
   create_table "items", force: :cascade do |t|
     t.string   "text"
     t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
+
+  add_index "items", ["category_id"], name: "index_items_on_category_id"
+  add_index "items", ["subcategory_id"], name: "index_items_on_subcategory_id"
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160212014729) do
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
+    t.text     "template"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"
@@ -78,9 +87,12 @@ ActiveRecord::Schema.define(version: 20160212014729) do
   create_table "subcategories", force: :cascade do |t|
     t.string   "name"
     t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
+
+  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
