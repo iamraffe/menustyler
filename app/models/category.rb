@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
-  belongs_to :menu
-  has_many :items
+  has_many :category_memberships
+  has_many :items, :through => :category_memberships
   has_many :subcategories
+  belongs_to :section
   liquid_methods :subcategories, :items, :name
 end

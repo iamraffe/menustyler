@@ -83,14 +83,14 @@ Menu.destroy_all
     {% endfor %}
   </ul>
 }
-Category.destroy_all
+# Category.destroy_all
 
-15.times{ |i| Category.create! name: Faker::Hacker.abbreviation, position: i, menu_id: [@wine_list.id, @menu.id].sample }
+# 15.times{ |i| Category.create! name: Faker::Hacker.abbreviation, position: i, menu_id: [@wine_list.id, @menu.id].sample }
 
-Subcategory.destroy_all
+# Subcategory.destroy_all
 
-15.times{ |i| Subcategory.create! name: Faker::Name.title, position: i, category_id: (0..15).to_a.sample }
+# 15.times{ |i| Subcategory.create! name: Faker::Name.title, position: i, category_id: (0..15).to_a.sample }
 
-Item.destroy_all
+# Item.destroy_all
 
-45.times{ |i| Item.create! text: Faker::Lorem.sentence(3), position: i, category_id: (0..15).to_a.sample, subcategory_id: (0..15).to_a.sample}
+# 45.times{ |i| Item.create! text: Faker::Lorem.sentence(3), position: i, category_id: (0..15).to_a.sample, subcategory_id: (0..15).to_a.sample}

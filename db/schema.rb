@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212014729) do
+ActiveRecord::Schema.define(version: 20160219091212) do
 
   create_table "archives", force: :cascade do |t|
     t.text     "content"
@@ -25,10 +25,20 @@ ActiveRecord::Schema.define(version: 20160212014729) do
     t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "menu_id"
+    t.integer  "section_id"
   end
 
-  add_index "categories", ["menu_id"], name: "index_categories_on_menu_id"
+  add_index "categories", ["section_id"], name: "index_categories_on_section_id"
+
+  create_table "category_memberships", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "category_memberships", ["category_id"], name: "index_category_memberships_on_category_id"
+  add_index "category_memberships", ["item_id"], name: "index_category_memberships_on_item_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -54,14 +64,9 @@ ActiveRecord::Schema.define(version: 20160212014729) do
   create_table "items", force: :cascade do |t|
     t.string   "text"
     t.integer  "position"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "category_id"
-    t.integer  "subcategory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "items", ["category_id"], name: "index_items_on_category_id"
-  add_index "items", ["subcategory_id"], name: "index_items_on_subcategory_id"
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -84,6 +89,15 @@ ActiveRecord::Schema.define(version: 20160212014729) do
 
   add_index "menus", ["group_id"], name: "index_menus_on_group_id"
 
+  create_table "sections", force: :cascade do |t|
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "menu_id"
+  end
+
+  add_index "sections", ["menu_id"], name: "index_sections_on_menu_id"
+
   create_table "subcategories", force: :cascade do |t|
     t.string   "name"
     t.integer  "position"
@@ -93,6 +107,16 @@ ActiveRecord::Schema.define(version: 20160212014729) do
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
+
+  create_table "subcategory_memberships", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "subcategory_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "subcategory_memberships", ["item_id"], name: "index_subcategory_memberships_on_item_id"
+  add_index "subcategory_memberships", ["subcategory_id"], name: "index_subcategory_memberships_on_subcategory_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

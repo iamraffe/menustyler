@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
-  belongs_to :subcategory
-  belongs_to :category
+  has_many :category_memberships
+  has_many :categories, :through => :category_memberships
+  has_many :subcategory_memberships
+  has_many :subcategories, :through => :subcategory_memberships
   liquid_methods :text
 end
