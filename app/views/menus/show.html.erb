@@ -1,1 +1,8 @@
-<%= Liquid::Template.parse(@menu.template).render('categories' => @menu.categories).html_safe %>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <% @menu.templates.each do |template| %>
+      <h1><%= link_to template.name, menu_template_path(@menu, template) %></h1>
+      <p><%= template.description %></p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+<%= @template %>
+<%= Liquid::Template.parse(@template.structure).render({'sections' => @template.sections}).html_safe %>

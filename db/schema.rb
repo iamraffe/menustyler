@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219091212) do
+ActiveRecord::Schema.define(version: 20160219919105) do
 
   create_table "archives", force: :cascade do |t|
     t.text     "content"
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20160219091212) do
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
-    t.text     "template"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"
@@ -91,12 +90,12 @@ ActiveRecord::Schema.define(version: 20160219091212) do
 
   create_table "sections", force: :cascade do |t|
     t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "menu_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "template_id"
   end
 
-  add_index "sections", ["menu_id"], name: "index_sections_on_menu_id"
+  add_index "sections", ["template_id"], name: "index_sections_on_template_id"
 
   create_table "subcategories", force: :cascade do |t|
     t.string   "name"
@@ -117,6 +116,17 @@ ActiveRecord::Schema.define(version: 20160219091212) do
 
   add_index "subcategory_memberships", ["item_id"], name: "index_subcategory_memberships_on_item_id"
   add_index "subcategory_memberships", ["subcategory_id"], name: "index_subcategory_memberships_on_subcategory_id"
+
+  create_table "templates", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "structure"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "menu_id"
+  end
+
+  add_index "templates", ["menu_id"], name: "index_templates_on_menu_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

@@ -8,8 +8,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bootstrap-sass'
-gem 'bootswatch-rails'
+gem 'materialize-sass'
 gem 'dotenv-rails'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'

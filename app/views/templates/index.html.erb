@@ -1,0 +1,6 @@
+<h1>This menu has the following templates:</h1>
+
+<% @templates.each do |template| %>
+    <h1><%= link_to template.name, menu_templates_path(@menu, template) %></h1>
+    <p><%= template.description %></p>
+<% end %>
