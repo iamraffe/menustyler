@@ -84,6 +84,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
+    connection_pool (2.2.0)
     debug_inspector (0.0.2)
     devise (3.5.3)
       bcrypt (~> 3.0)
@@ -213,6 +214,13 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    react-rails (1.6.0)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.2)
+      tilt
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.21)
@@ -293,6 +301,7 @@ DEPENDENCIES
   rails (= 4.2.5)
   rails-jquery-autocomplete
   rails_12factor
+  react-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
